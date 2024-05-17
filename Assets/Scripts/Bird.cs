@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Debug = UnityEngine.Debug;
+
 public class Bird : MonoBehaviour
 {
     private bool isClick=false;
@@ -80,6 +83,7 @@ public class Bird : MonoBehaviour
         return;
 
         if(isClick){
+            
             transform.position=Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.position+=new Vector3(0,0,-Camera.main.transform.position.z);
         
@@ -95,10 +99,10 @@ public class Bird : MonoBehaviour
         }
 
         // 主相机跟随
-        float posX=transform.position.x;//小鸟位置
-        Camera.main.transform.position=Vector3.Lerp(Camera.main.transform.position,
-        new Vector3(Mathf.Clamp(posX,-4,15),Camera.main.transform.position.y,Camera.main.transform.position.z),
-        smooth*Time.deltaTime);
+        // float posX=transform.position.x;//小鸟位置
+        // Camera.main.transform.position=Vector3.Lerp(Camera.main.transform.position,
+        // new Vector3(Mathf.Clamp(posX,-4,15),Camera.main.transform.position.y,Camera.main.transform.position.z),
+        // smooth*Time.deltaTime);
 
 
         if(isFly){
